@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free Age Gap Calculator for relationship compatibility, exact age difference, half-your-age-plus-seven rule, life stages, percentages, decades apart, and shareable results."
+    />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="robots" content="index, follow" />
+    <title>Age Gap Calculator - Relationship Compatibility & Age Difference</title>
+    <link rel="canonical" href="https://age-gap-calculator.vercel.app/" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("ageGapTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Age Gap Calculator",
+        "applicationCategory": "CalculatorTool",
+        "operatingSystem": "Any",
+        "url": "https://age-gap-calculator.vercel.app/",
+        "description": "Calculate exact age differences, relationship age gap compatibility, half-your-age-plus-seven guidance, generations, zodiac signs, and decades apart.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Age difference in years, months, and days",
+          "Relationship compatibility rating",
+          "Half your age plus seven rule",
+          "Age gap percentage",
+          "Generation and zodiac comparison",
+          "Recent calculations history"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a normal age gap in relationships?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is no single normal age gap. Many couples are close in age, while others have larger age differences. Compatibility depends on consent, maturity, values, communication, and life goals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the half your age plus seven rule?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The informal rule says a person's youngest socially acceptable dating age is half their age plus seven. It is a cultural guideline, not a law or scientific rule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate age gap percentage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Age gap percentage is calculated as the age difference divided by the older person's age, multiplied by 100."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Age Gap Calculator home">
+          <span class="brand-mark" aria-hidden="true">AG</span>
+          <span>Age Gap Calculator</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">
+          <span class="theme-glyph" aria-hidden="true"></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="eyebrow">Relationship age difference and compatibility</p>
+          <h1>Age Gap Calculator</h1>
+          <p>
+            Compare two birthdays instantly with exact age difference, life stage
+            insights, the half-age rule, zodiac signs, and a shareable compatibility score.
+          </p>
+        </div>
+      </section>
+
+      <div class="ad-slot ad-wide" aria-label="Advertisement">
+        <!-- AdSense customization point: place above-calculator ad code here. -->
+        <span>Advertisement</span>
+      </div>
+
+      <div class="app-layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Calculate Age Gap</h2>
+              <p>Results update in real time as you choose dates.</p>
+            </div>
+            <button class="ghost-button" type="button" id="clearButton">Clear</button>
+          </div>
+
+          <form class="date-form" id="ageGapForm">
+            <div class="field">
+              <label for="personA">Person A date of birth</label>
+              <input id="personA" name="personA" type="date" required aria-describedby="personAHelp" />
+              <span class="field-help" id="personAHelp">Choose the first person's birthday.</span>
+            </div>
+            <div class="field">
+              <label for="personB">Person B date of birth</label>
+              <input id="personB" name="personB" type="date" required aria-describedby="personBHelp" />
+              <span class="field-help" id="personBHelp">Choose the second person's birthday.</span>
+            </div>
+          </form>
+
+          <section class="results" id="results" aria-live="polite" aria-label="Age gap results">
+            <div class="empty-state" id="emptyState">
+              <strong>Pick two birthdays to begin.</strong>
+              <span>The calculator will show exact difference, compatibility, generations, and share text.</span>
+            </div>
+
+            <div class="result-grid is-hidden" id="resultGrid">
+              <article class="metric-card primary-result">
+                <span class="metric-label">Exact age difference</span>
+                <strong id="exactDifference">-</strong>
+                <span id="differenceDetail">-</span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-label">Age gap percentage</span>
+                <strong id="gapPercent">-</strong>
+                <span>of the older person's age</span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-label">Decades apart</span>
+                <strong id="decadeCount">-</strong>
+                <span id="decadeDetail">-</span>
+              </article>
+              <article class="metric-card">
+                <span class="metric-label">Life stages</span>
+                <strong id="lifeStages">-</strong>
+                <span id="lifeStageGap">-</span>
+              </article>
+            </div>
+
+            <div class="compatibility is-hidden" id="compatibilityPanel">
+              <div class="compatibility-top">
+                <div>
+                  <span class="metric-label">Compatibility rating</span>
+                  <strong id="compatibilityScore">-</strong>
+                </div>
+                <span class="rating-pill" id="ratingLabel">-</span>
+              </div>
+              <div class="gauge" role="meter" aria-label="Compatibility score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="gauge">
+                <span id="gaugeFill"></span>
+              </div>
+              <p id="compatibilitySummary">-</p>
+            </div>
+
+            <div class="insight-grid is-hidden" id="insightGrid">
+              <article class="insight-card">
+                <h3>Half Your Age Plus Seven</h3>
+                <p id="halfAgeRule">-</p>
+              </article>
+              <article class="insight-card">
+                <h3>Zodiac Snapshot</h3>
+                <p id="zodiacResult">-</p>
+              </article>
+              <article class="insight-card">
+                <h3>Fun Fact</h3>
+                <p id="funFact">-</p>
+                <button class="text-button" type="button" id="newFactButton">New fact</button>
+              </article>
+            </div>
+
+            <div class="share-panel is-hidden" id="sharePanel">
+              <label for="shareText">Share-friendly result</label>
+              <textarea id="shareText" rows="3" readonly></textarea>
+              <div class="button-row">
+                <button class="primary-button" type="button" id="shareButton">Share Result</button>
+                <button class="secondary-button" type="button" id="copyButton">Copy Text</button>
+              </div>
+              <p class="status" id="copyStatus" role="status" aria-live="polite"></p>
+            </div>
+          </section>
+        </section>
+
+        <aside class="sidebar" aria-label="Related tools and saved calculations">
+          <div class="ad-slot ad-sidebar" aria-label="Advertisement">
+            <!-- AdSense customization point: place sidebar ad code here. -->
+            <span>Advertisement</span>
+          </div>
+
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Calculations</h2>
+              <button class="text-button" type="button" id="clearHistoryButton">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+            <p class="muted" id="historyEmpty">Your last 5 results will appear here.</p>
+          </section>
+        </aside>
+      </div>
+
+      <div class="ad-slot ad-wide" aria-label="Advertisement">
+        <!-- AdSense customization point: place below-calculator ad code here. -->
+        <span>Advertisement</span>
+      </div>
+
+      <section class="faq-section" aria-labelledby="faqTitle">
+        <h2 id="faqTitle">Age Gap FAQ</h2>
+        <details>
+          <summary>What famous couples have age gaps?</summary>
+          <p>
+            Famous couples with age gaps have included Beyonce and Jay-Z, Blake Lively and Ryan Reynolds,
+            George and Amal Clooney, and Priyanka Chopra Jonas and Nick Jonas. Public examples vary over time,
+            but they show that age gaps can appear in many kinds of relationships.
+          </p>
+        </details>
+        <details>
+          <summary>Do age gaps affect relationship dynamics?</summary>
+          <p>
+            They can. Differences in career stage, finances, family goals, health, and social circles may matter.
+            Strong communication and shared expectations usually matter more than the number itself.
+          </p>
+        </details>
+        <details>
+          <summary>What does age gap percentage mean?</summary>
+          <p>
+            It expresses the gap relative to the older person's current age. A 5-year gap is a larger percentage
+            at age 20 than at age 60.
+          </p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Age Gap Calculator. For entertainment and informational use only.</p>
+      <nav aria-label="Footer navigation">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </footer>
+
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Terms of use for Age Gap Calculator." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Terms of Use - Age Gap Calculator</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("ageGapTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">AG</span><span>Age Gap Calculator</span></a>
+        <div class="nav-links"><a href="about.html">About</a><a href="privacy.html">Privacy</a><a href="terms.html" aria-current="page">Terms</a></div>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme"><span class="theme-glyph" aria-hidden="true"></span></button>
+      </nav>
+    </header>
+    <main class="content-page">
+      <section class="page-hero">
+        <p class="eyebrow">Terms</p>
+        <h1>Terms of Use</h1>
+        <p>Last updated: July 2, 2026</p>
+      </section>
+      <article class="content-card">
+        <h2>Acceptance</h2>
+        <p>
+          By using Age Gap Calculator, you agree to these terms. If you do not agree, do not use the site.
+        </p>
+
+        <h2>Informational Use Only</h2>
+        <p>
+          The calculator is provided for entertainment and general informational purposes. It does not provide legal,
+          medical, psychological, financial, or relationship advice.
+        </p>
+
+        <h2>No Guarantee</h2>
+        <p>
+          We aim to keep calculations accurate, but we do not guarantee that the site will be error-free, uninterrupted,
+          or suitable for every purpose.
+        </p>
+
+        <h2>Responsible Use</h2>
+        <p>
+          You are responsible for how you interpret and share results. Always follow applicable laws and respect privacy,
+          consent, and personal boundaries.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          We may update these terms from time to time. Continued use of the site after changes means you accept the updated
+          terms.
+        </p>
+      </article>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 Age Gap Calculator.</p>
+      <nav aria-label="Footer navigation"><a href="index.html">Calculator</a><a href="about.html">About</a><a href="privacy.html">Privacy</a></nav>
+    </footer>
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>
