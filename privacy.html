@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Privacy policy for Unit Converter - a privacy-first tool that stores data only in your browser. No tracking, no cookies, no data collection."
+    />
+    <meta name="robots" content="noindex, follow" />
+    <title>Privacy Policy | Unit Converter</title>
+    <link rel="canonical" href="https://unitconverter.vercel.app/privacy.html" />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">UC</span><span>Unit Converter</span></a>
+        <div class="nav-actions">
+          <a class="nav-link" href="index.html">Calculator</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="content-page">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: July 2, 2026</p>
+      <h2>Information We Collect</h2>
+      <p>
+        Unit Converter does not require accounts and does not ask for personal
+        information. Your dark mode setting and recent conversions may be saved
+        in your browser localStorage so the tool works better on return visits. This data never leaves your device.
+      </p>
+      <h2>What Data Is Stored Locally</h2>
+      <p>
+        <strong>localStorage items:</strong>
+      </p>
+      <ul>
+        <li><code>unitConverterTheme</code> - Your dark/light mode preference</li>
+        <li><code>unitConverterHistory</code> - Your last 5 conversions (stored locally only)</li>
+      </ul>
+      <p>
+        These are stored only in your browser and cleared if you clear your browser cache. We have zero access to this data.
+      </p>
+      <h2>Server Logs</h2>
+      <p>
+        When you visit Unit Converter, your web server may log standard HTTP information such as your IP address, browser type, and pages visited. These logs are used only for security and server maintenance purposes. We do not use this information for tracking or marketing.
+      </p>
+      <h2>Advertising</h2>
+      <p>
+        This site may display advertisements from third-party ad providers such as Google AdSense. These providers may use cookies or similar technologies to serve and measure ads according to their own privacy policies. We recommend reviewing their policies separately.
+      </p>
+      <h2>Analytics</h2>
+      <p>
+        If analytics services are added in the future, they will be configured to respect applicable privacy laws (including GDPR and CCPA) and this policy will be updated with appropriate disclosure.
+      </p>
+      <h2>Third-Party Services</h2>
+      <p>
+        Unit Converter is hosted on Vercel. Please review Vercel's privacy policy for information about their data handling practices.
+      </p>
+      <h2>Contact</h2>
+      <p>For privacy questions or data requests, contact the site owner through the Unit Converter website contact method.</p>
+    </main>
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Calculator</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/theme.js" defer></script>
+  </body>
+</html>

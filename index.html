@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free unit converter with dark mode, copy-to-clipboard & conversion history. Convert temperature, length, weight, volume, pressure, speed & area instantly. No signup required."
+    />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Unit Converter - Free Celsius to Fahrenheit, KG to LBS & More</title>
+    <link rel="canonical" href="https://unitconverter.vercel.app/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Unit Converter - Free Instant Conversions" />
+    <meta property="og:description" content="Fast unit converter with dark mode, copy-to-clipboard & conversion history. Convert temperature, length, weight, volume, pressure, speed & area online." />
+    <meta property="og:url" content="https://unitconverter.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://unitconverter.vercel.app/og-image.png" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Unit Converter - Instant Conversions" />
+    <meta name="twitter:description" content="Free unit converter with dark mode, history & copy-to-clipboard. Convert temperature, length, weight, volume, pressure, speed & area. No signup." />
+    <meta name="twitter:image" content="https://unitconverter.vercel.app/og-image.png" />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Unit Converter Calculator",
+        "applicationCategory": "CalculatorTool",
+        "operatingSystem": "Any",
+        "description": "A fast unit conversion calculator for temperature, length, weight, volume, pressure, speed, and area.",
+        "url": "https://unitconverter.vercel.app/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Instant metric and imperial conversions</p>
+          <h1>Unit Converter Calculator</h1>
+          <p>
+            Convert temperature, length, weight, volume, pressure, speed, and
+            area with keyboard-friendly controls and saved recent results.
+          </p>
+        </div>
+      </section>
+
+      <div class="ad-slot ad-slot-wide" aria-label="Advertisement">
+        <!-- AdSense customization point: place above-calculator ad code here. -->
+        <span>Advertisement</span>
+      </div>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Conversion Calculator</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 m = 100 cm</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <div class="ad-slot ad-slot-side" aria-label="Advertisement">
+            <!-- AdSense customization point: place sidebar ad code here. -->
+            <span>Advertisement</span>
+          </div>
+
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="faq-section" aria-labelledby="faqTitle">
+        <h2 id="faqTitle">Frequently Asked Questions</h2>
+        
+        <div itemscope itemtype="https://schema.org/FAQPage">
+          
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How do I convert Celsius to Fahrenheit?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">To convert Celsius to Fahrenheit, multiply the temperature in Celsius by 9/5, then add 32. For example: 0°C = 32°F (freezing point of water), 100°C = 212°F (boiling point). Use our <a href="/temperature-converter/">temperature converter</a> for instant conversions.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How many kilograms are in a pound?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">1 pound (lb) equals approximately 0.4536 kilograms (kg). So 1 kg ≈ 2.2046 pounds. Our <a href="/weight-converter/">weight converter</a> provides instant kg to lbs conversions with precision.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How many centimeters are in an inch?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">1 inch (in) equals exactly 2.54 centimeters (cm). So 1 cm = 0.3937 inches. Our <a href="/length-converter/">length converter</a> handles all metric and imperial length conversions instantly.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How many liters are in a gallon?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">1 US gallon equals 3.7854 liters. So 1 liter ≈ 0.2642 gallons. Use our <a href="/volume-converter/">volume converter</a> for quick conversions between liters, gallons, milliliters, and more.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Is this unit converter accurate?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes, our converter uses standard international conversion factors (SI units). All calculations are performed locally in your browser using precise mathematical formulas for accuracy and privacy.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Do you store or track my conversions?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">No. Your recent conversions are stored only in your browser's localStorage for convenience. We don't send data to servers, use tracking cookies, or collect personal information. Your privacy is protected.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Does the converter work offline?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes, the converter works entirely in your browser. Once loaded, all conversions happen locally without any server calls. You can bookmark the page and use it offline.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What conversion types are supported?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">We support 7 converter types: <a href="/temperature-converter/">temperature</a>, <a href="/length-converter/">length</a>, <a href="/weight-converter/">weight</a>, <a href="/volume-converter/">volume</a>, <a href="/pressure-converter/">pressure</a>, <a href="/speed-converter/">speed</a>, and <a href="/area-converter/">area</a>. Each includes common metric and imperial units.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="ad-slot ad-slot-wide" aria-label="Advertisement">
+        <!-- AdSense customization point: place below-calculator ad code here. -->
+        <span>Advertisement</span>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>

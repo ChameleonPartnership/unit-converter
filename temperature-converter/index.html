@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free temperature converter. Instantly convert Celsius to Fahrenheit, Kelvin and vice versa. No signup required, works offline."
+    />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Temperature Converter - Celsius to Fahrenheit & Kelvin</title>
+    <link rel="canonical" href="https://unitconverter.vercel.app/temperature-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Temperature Converter - Free Celsius to Fahrenheit" />
+    <meta property="og:description" content="Instantly convert Celsius to Fahrenheit, Kelvin and more. Free online temperature converter with dark mode." />
+    <meta property="og:url" content="https://unitconverter.vercel.app/temperature-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Temperature Converter" />
+    <meta name="twitter:description" content="Free temperature converter - convert Celsius to Fahrenheit instantly." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Temperature Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert Celsius, Fahrenheit, and Kelvin instantly",
+        "url": "https://unitconverter.vercel.app/temperature-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric & Imperial Temperature Conversions</p>
+          <h1>Temperature Converter</h1>
+          <p>
+            Convert Celsius, Fahrenheit, and Kelvin instantly with our free online temperature converter. No signup required.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Temperature</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 °C = 33.8 °F</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+        <h2>Temperature Conversion Guide</h2>
+        <p>
+          Temperature conversion is essential for science, cooking, weather forecasting, and travel. Whether you need to convert Celsius to Fahrenheit for a recipe or Kelvin for a science experiment, our converter provides instant, accurate results.
+        </p>
+
+        <h3>Celsius to Fahrenheit Formula</h3>
+        <p><strong>°F = (°C × 9/5) + 32</strong></p>
+        <p>Example: 25°C = (25 × 1.8) + 32 = 77°F (comfortable room temperature)</p>
+
+        <h3>Fahrenheit to Celsius Formula</h3>
+        <p><strong>°C = (°F - 32) × 5/9</strong></p>
+        <p>Example: 77°F = (77 - 32) × 0.556 = 25°C</p>
+
+        <h3>Kelvin Conversion</h3>
+        <p><strong>K = °C + 273.15</strong></p>
+        <p>Kelvin is the SI unit of temperature used in science and engineering. Absolute zero is 0 K (−273.15°C).</p>
+
+        <h2>Common Temperature Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <th style="text-align: left; padding: 10px;">Celsius</th>
+            <th style="text-align: left; padding: 10px;">Fahrenheit</th>
+            <th style="text-align: left; padding: 10px;">Description</th>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">0°C</td>
+            <td style="padding: 10px;">32°F</td>
+            <td style="padding: 10px;">Freezing point of water</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">10°C</td>
+            <td style="padding: 10px;">50°F</td>
+            <td style="padding: 10px;">Cold day</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">20°C</td>
+            <td style="padding: 10px;">68°F</td>
+            <td style="padding: 10px;">Comfortable room temperature</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">25°C</td>
+            <td style="padding: 10px;">77°F</td>
+            <td style="padding: 10px;">Warm room</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">37°C</td>
+            <td style="padding: 10px;">98.6°F</td>
+            <td style="padding: 10px;">Normal human body temperature</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">100°C</td>
+            <td style="padding: 10px;">212°F</td>
+            <td style="padding: 10px;">Boiling point of water</td>
+          </tr>
+        </table>
+
+        <h2>Why Temperature Conversions Matter</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Cooking & Baking:</strong> Recipes use different temperature units depending on origin (US recipes use Fahrenheit, European recipes use Celsius)</li>
+          <li><strong>Weather:</strong> Understanding temperature in both scales helps when traveling or consuming international weather reports</li>
+          <li><strong>Science:</strong> Scientific calculations often require Kelvin (absolute temperature scale)</li>
+          <li><strong>Medicine:</strong> Body temperature is measured in Celsius in most countries, Fahrenheit in the US</li>
+          <li><strong>Industrial Applications:</strong> Engineering and manufacturing require precise temperature conversions</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

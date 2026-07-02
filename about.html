@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn about Unit Converter - a free, privacy-first tool for instant metric & imperial conversions. Dark mode, no ads, no tracking."
+    />
+    <meta name="robots" content="index, follow" />
+    <title>About Unit Converter - Free Metric & Imperial Conversion Tool</title>
+    <link rel="canonical" href="https://unitconverter.vercel.app/about.html" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="About Unit Converter" />
+    <meta property="og:description" content="Free, privacy-first unit converter with dark mode. Convert temperature, length, weight, volume, pressure, speed & area. No ads, no tracking." />
+    <meta property="og:url" content="https://unitconverter.vercel.app/about.html" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="About Unit Converter" />
+    <meta name="twitter:description" content="Free unit converter with dark mode, no ads, no tracking. Privacy-first design." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Unit Converter",
+      "url": "https://unitconverter.vercel.app",
+      "description": "Free unit converter for temperature, length, weight, volume, pressure, speed, and area conversions",
+      "applicationCategory": "CalculatorTool",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">UC</span><span>Unit Converter</span></a>
+        <div class="nav-actions">
+          <a class="nav-link" href="index.html">Calculator</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="content-page">
+      <h1>About Unit Converter</h1>
+      <p>
+        Unit Converter is a free, lightweight web calculator designed for everyday metric and imperial conversions. It supports temperature, length, weight, volume, pressure, speed, and area conversions without requiring a page reload or account signup.
+      </p>
+      
+      <h2>Our Mission</h2>
+      <p>
+        We believe unit conversion should be fast, simple, and private. That's why we built a converter that runs entirely in your browser with zero tracking, no advertisements cluttering the interface, and no data collection.
+      </p>
+      
+      <h2>How It Works</h2>
+      <p>
+        All calculations run locally in your browser using standard international conversion factors (SI units). Your recent conversion history and dark mode preferences are stored only in your browser's localStorage—we never send data to our servers or third parties.
+      </p>
+      
+      <h2>Key Features</h2>
+      <ul style="color: var(--color-muted);">
+        <li><strong>Dark Mode:</strong> Easy on the eyes during nighttime use</li>
+        <li><strong>Copy & Share:</strong> One-click copying and native sharing</li>
+        <li><strong>Conversion History:</strong> Access your last 5 conversions</li>
+        <li><strong>Accessibility First:</strong> WCAG 2.1 compliant with full keyboard navigation</li>
+        <li><strong>Offline Ready:</strong> Works without internet after initial load</li>
+        <li><strong>Privacy Focused:</strong> No tracking, no analytics, no cookies</li>
+      </ul>
+      
+      <h2>Supported Conversions</h2>
+      <p style="color: var(--color-muted);">
+        <a href="/temperature-converter/">Temperature</a> (Celsius, Fahrenheit, Kelvin) • 
+        <a href="/length-converter/">Length</a> (mm, cm, m, km, inches, feet, yards, miles) • 
+        <a href="/weight-converter/">Weight</a> (mg, g, kg, oz, lb, ton) • 
+        <a href="/volume-converter/">Volume</a> (ml, l, fl oz, cup, pint, gallon) • 
+        <a href="/pressure-converter/">Pressure</a> (Pa, kPa, bar, psi, atm) • 
+        <a href="/speed-converter/">Speed</a> (m/s, km/h, mph, knots) • 
+        <a href="/area-converter/">Area</a> (mm², cm², m², km², in², ft², acres)
+      </p>
+      
+      <h2>Accuracy</h2>
+      <p>
+        Our converter uses precise international unit definitions and mathematical formulas for accurate results. All conversions are calculated with up to 12 significant figures of precision. However, Unit Converter is provided without warranties and is intended for general informational purposes only. For critical applications (engineering, medicine, legal, financial), please verify conversions independently.
+      </p>
+    </main>
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Calculator</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/theme.js" defer></script>
+  </body>
+</html>
