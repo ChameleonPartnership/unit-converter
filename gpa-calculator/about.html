@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn how GPA is calculated, compare common grading scales, and understand weighted, cumulative, and target GPA formulas." />
+    <meta name="theme-color" content="#1d4ed8" />
+    <title>About GPA Calculations - GPA Calculator</title>
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("gpaCalculatorTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">GPA</span><span>GPA Calculator</span></a>
+        <div class="nav-actions">
+          <a class="nav-link" href="index.html">Calculator</a>
+          <a class="nav-link" href="privacy.html">Privacy</a>
+          <a class="nav-link" href="terms.html">Terms</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode"><span aria-hidden="true">◐</span></button>
+        </div>
+      </nav>
+    </header>
+    <main class="content-page">
+      <h1>About This GPA Calculator</h1>
+      <p>This tool helps students estimate simple GPA, weighted GPA, cumulative GPA, target GPA, and letter-grade point values. It runs entirely in your browser and saves recent calculations locally on your device.</p>
+
+      <h2>How to Calculate GPA</h2>
+      <p>For a credit-weighted GPA, multiply each course grade point by the course credit hours. Add those quality points together, then divide by the total credits attempted.</p>
+      <p><strong>GPA = total quality points / total credit hours</strong></p>
+
+      <h2>Common Grade Reference</h2>
+      <table class="scale-table">
+        <thead>
+          <tr>
+            <th>Letter</th>
+            <th>4.0 scale</th>
+            <th>Typical meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A / A+</td><td>4.0</td><td>Excellent</td></tr>
+          <tr><td>A-</td><td>3.7</td><td>Very strong</td></tr>
+          <tr><td>B+</td><td>3.3</td><td>Strong</td></tr>
+          <tr><td>B</td><td>3.0</td><td>Good</td></tr>
+          <tr><td>C</td><td>2.0</td><td>Satisfactory</td></tr>
+          <tr><td>D</td><td>1.0</td><td>Passing at many schools</td></tr>
+          <tr><td>F</td><td>0.0</td><td>No grade points</td></tr>
+        </tbody>
+      </table>
+
+      <h2>University-Specific Scales</h2>
+      <p>Universities do not all use the same grading policy. Some cap A+ at 4.0, some allow 4.3, some high schools use 5.0 weighted scales for honors or AP courses, and some international systems use 7.0 scales. Always confirm official rules with your school registrar or academic handbook.</p>
+
+      <h2>Customization</h2>
+      <p>Developers can customize colors in <code>assets/css/styles.css</code> and grading scales in <code>assets/js/app.js</code>. The scale object is intentionally grouped near the top of the JavaScript file.</p>
+    </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 GPA Calculator.</p>
+    </footer>
+    <script src="assets/js/theme.js"></script>
+  </body>
+</html>

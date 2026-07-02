@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free GPA calculator for simple GPA, weighted GPA, cumulative GPA, target GPA, and letter grade conversion across 4.0, 5.0, and 7.0 scales."
+    />
+    <meta name="theme-color" content="#1d4ed8" />
+    <meta name="robots" content="index, follow" />
+    <title>GPA Calculator - Weighted, Cumulative, Target GPA</title>
+    <link rel="canonical" href="https://gpa-calculator.vercel.app/" />
+
+    <meta property="og:title" content="GPA Calculator - Weighted, Cumulative, Target GPA" />
+    <meta property="og:description" content="Calculate GPA instantly with simple, weighted, cumulative, target, and university-scale modes." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gpa-calculator.vercel.app/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="GPA Calculator" />
+    <meta name="twitter:description" content="Free GPA calculator with weighted, cumulative, target, and grade conversion modes." />
+
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("gpaCalculatorTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GPA Calculator",
+        "applicationCategory": "CalculatorTool",
+        "description": "Calculate simple GPA, weighted GPA, cumulative GPA, target GPA, and letter grade conversions.",
+        "url": "https://gpa-calculator.vercel.app/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do universities calculate GPA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most universities multiply each course grade point by its credit hours, add the grade points, then divide by total attempted credits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate GPA on a 5.0 or 7.0 scale?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select the GPA scale menu to switch between standard 4.0, 4.3, 5.0, and 7.0 scales."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What GPA do I need to reach my target GPA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use Target mode, enter your current GPA, completed credits, future credits, and desired cumulative GPA. The calculator estimates the GPA needed in future courses."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="GPA Calculator home">
+          <span class="brand-mark" aria-hidden="true">GPA</span>
+          <span>GPA Calculator</span>
+        </a>
+        <div class="nav-actions">
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="privacy.html">Privacy</a>
+          <a class="nav-link" href="terms.html">Terms</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+            <span aria-hidden="true">◐</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Simple, Weighted, Cumulative, Target</p>
+          <h1>GPA Calculator</h1>
+          <p>
+            Calculate GPA in real time with letter grades, credit hours, semester history, target planning, and 4.0, 5.0, or 7.0 university scales.
+          </p>
+        </div>
+      </section>
+
+      <div class="ad-slot" aria-label="Advertisement area above calculator">
+        Advertisement placement: above calculator
+      </div>
+
+      <div class="layout">
+        <section class="calculator-panel" id="calculatorPanel" data-mode="simple" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Calculate Your GPA</h2>
+              <p>Results update instantly as grades, credits, and scales change.</p>
+            </div>
+          </div>
+
+          <div class="tab-list" role="tablist" aria-label="GPA calculation mode">
+            <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="simplePanel" id="simpleTab" data-mode="simple">Simple</button>
+            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="weightedPanel" id="weightedTab" data-mode="weighted" tabindex="-1">Weighted</button>
+            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="cumulativePanel" id="cumulativeTab" data-mode="cumulative" tabindex="-1">Cumulative</button>
+            <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="targetPanel" id="targetTab" data-mode="target" tabindex="-1">Target</button>
+          </div>
+
+          <form id="gpaForm" aria-describedby="statusMessage">
+            <div class="form-grid">
+              <div class="field">
+                <label for="scaleSelect">GPA scale</label>
+                <select id="scaleSelect" name="scale" aria-label="GPA scale"></select>
+              </div>
+              <div class="field">
+                <label for="conversionGrade">Grade to GPA conversion</label>
+                <select id="conversionGrade" name="conversionGrade" aria-label="Letter grade to convert"></select>
+              </div>
+              <div class="field">
+                <label for="conversionScale">Conversion scale</label>
+                <select id="conversionScale" name="conversionScale" aria-label="Conversion scale"></select>
+              </div>
+              <div class="field">
+                <label for="conversionOutput">Converted value</label>
+                <output id="conversionOutput" for="conversionGrade conversionScale">A = 4.0 / 4.0</output>
+              </div>
+            </div>
+
+            <section class="mode-panel" id="simplePanel" role="tabpanel" aria-labelledby="simpleTab" data-panel="simple">
+              <h3 class="sr-only">Simple GPA inputs</h3>
+            </section>
+            <section class="mode-panel" id="weightedPanel" role="tabpanel" aria-labelledby="weightedTab" data-panel="weighted" hidden>
+              <h3 class="sr-only">Weighted GPA inputs</h3>
+            </section>
+            <section class="mode-panel" id="cumulativePanel" role="tabpanel" aria-labelledby="cumulativeTab" data-panel="cumulative" hidden>
+              <h3 class="sr-only">Cumulative GPA inputs</h3>
+            </section>
+            <section class="mode-panel" id="targetPanel" role="tabpanel" aria-labelledby="targetTab" data-panel="target" hidden>
+              <div class="target-grid">
+                <div class="field">
+                  <label for="currentGpa">Current GPA</label>
+                  <input id="currentGpa" type="number" inputmode="decimal" step="0.01" min="0" value="3.2" />
+                </div>
+                <div class="field">
+                  <label for="currentCredits">Completed credits</label>
+                  <input id="currentCredits" type="number" inputmode="decimal" step="0.5" min="0" value="45" />
+                </div>
+                <div class="field">
+                  <label for="futureCredits">Future credits</label>
+                  <input id="futureCredits" type="number" inputmode="decimal" step="0.5" min="0" value="15" />
+                </div>
+                <div class="field">
+                  <label for="targetGpa">Target cumulative GPA</label>
+                  <input id="targetGpa" type="number" inputmode="decimal" step="0.01" min="0" value="3.5" />
+                </div>
+              </div>
+            </section>
+
+            <div class="rows-header" aria-hidden="true">
+              <span>Course or semester</span>
+              <span>Grade</span>
+              <span>Credits</span>
+              <span></span>
+            </div>
+            <div class="rows" id="courseRows" aria-label="Grade rows"></div>
+            <button class="add-row" id="addRow" type="button">Add grade row</button>
+
+            <div class="result-actions" aria-label="Calculation result and actions">
+              <div>
+                <output class="result" id="resultText" for="scaleSelect courseRows">Enter grades to calculate.</output>
+                <p class="result-detail" id="resultDetail">Results update instantly as values change.</p>
+              </div>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <div class="ad-slot" aria-label="Advertisement area in sidebar">Advertisement placement: sidebar</div>
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading">
+              <div>
+                <h2 id="historyTitle">Recent Calculations</h2>
+                <p>Last 5 saved locally on this device.</p>
+              </div>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <div class="ad-slot" aria-label="Advertisement area below calculator">
+        Advertisement placement: below calculator
+      </div>
+
+      <section class="content-section">
+        <div class="content-grid">
+          <article class="info-card">
+            <h2>Weighted GPA Formula</h2>
+            <p>Weighted GPA equals total grade points divided by total credit hours. Each course contributes grade value multiplied by its credits.</p>
+          </article>
+          <article class="info-card">
+            <h2>Cumulative GPA Formula</h2>
+            <p>Cumulative GPA uses the same weighted formula across all semesters or terms: total quality points divided by total attempted credits.</p>
+          </article>
+          <article class="info-card">
+            <h2>Target GPA Formula</h2>
+            <p>Required GPA equals the grade points still needed divided by future credits. If the required GPA is above your scale, the target is not reachable with those credits alone.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faqTitle">
+        <h2 id="faqTitle">GPA Calculator FAQ</h2>
+        <details>
+          <summary>Do universities use the same GPA scale?</summary>
+          <p>No. Many US schools use a 4.0 scale, some use a 4.3 scale, some high schools use a 5.0 weighted scale, and some universities outside the US use 7.0 or other scales.</p>
+        </details>
+        <details>
+          <summary>What is the difference between simple and weighted GPA?</summary>
+          <p>Simple GPA averages grade values equally. Weighted GPA accounts for credit hours, so a 4-credit class affects GPA more than a 1-credit class.</p>
+        </details>
+        <details>
+          <summary>Can this calculator match my university exactly?</summary>
+          <p>Use the scale closest to your school policy. If your university has a custom conversion table, update the grading scale section in <code>assets/js/app.js</code>.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 GPA Calculator. Educational planning tool only.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
