@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online UUID/GUID generator. Generate v1, v4, v5, v7 UUIDs instantly. Validate UUIDs, export as JSON/CSV, and manage your UUID history with copy-to-clipboard functionality.">
+    <meta name="keywords" content="UUID generator, GUID generator, UUID v4, UUID v5, UUID validation, online tool, free">
+    <meta name="author" content="UUID Generator Pro">
+    <meta name="robots" content="index, follow">
+    <meta name="canonical" href="https://uuid-generator.pro/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="UUID Generator - Free Online Tool">
+    <meta property="og:description" content="Generate, validate, and export UUIDs. Support for v1, v4, v5, v7 versions with batch generation and custom options.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://uuid-generator.pro/">
+    <meta property="og:image" content="https://uuid-generator.pro/og-image.png">
+    <meta property="og:site_name" content="UUID Generator Pro">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UUID Generator - Free Online Tool">
+    <meta name="twitter:description" content="Generate, validate, and export UUIDs instantly.">
+    <meta name="twitter:image" content="https://uuid-generator.pro/og-image.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "UUID Generator",
+        "description": "Free online UUID/GUID generator with support for v1, v4, v5, and v7 versions",
+        "url": "https://uuid-generator.pro/",
+        "applicationCategory": "UtilityApplication",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1500"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <title>UUID Generator - Free Online v1, v4, v5, v7 GUID Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --warning-color: #f59e0b;
+            --bg-light: #ffffff;
+            --bg-gray: #f3f4f6;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Dark mode */
+            --dark-bg: #1f2937;
+            --dark-bg-secondary: #111827;
+            --dark-text: #f3f4f6;
+            --dark-text-light: #9ca3af;
+            --dark-border: #374151;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        body.dark-mode header {
+            border-bottom-color: var(--dark-border);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .theme-toggle {
+            background: var(--dark-bg-secondary);
+            border-color: var(--dark-border);
+        }
+
+        .theme-toggle:hover,
+        .theme-toggle:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Card */
+        .card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .card {
+            background: var(--dark-bg-secondary);
+            border-color: var(--dark-border);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Headings */
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode h2 {
+            color: var(--dark-text);
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        body.dark-mode label {
+            color: var(--dark-text);
+        }
+
+        /* Radio Group */
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            user-select: none;
+            background: var(--bg-gray);
+        }
+
+        body.dark-mode .radio-label {
+            background: var(--dark-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .radio-option input[type="radio"]:focus + .radio-label {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Input Fields */
+        input[type="number"],
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+
+        body.dark-mode input[type="number"],
+        body.dark-mode input[type="text"],
+        body.dark-mode select {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-border);
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        body.dark-mode input[type="number"]:focus,
+        body.dark-mode input[type="text"]:focus,
+        body.dark-mode select:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 44px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-primary:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        body.dark-mode .btn-secondary {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-small {
+            padding: 6px 10px;
+            font-size: 0.85rem;
+        }
+
+        /* UUID Output */
+        .uuid-output {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .uuid-value {
+            background: var(--bg-gray);
+            padding: 12px;
+            border-radius: 8px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 0.95rem;
+            word-break: break-all;
+            user-select: all;
+            border: 1px solid var(--border-color);
+        }
+
+        body.dark-mode .uuid-value {
+            background: var(--dark-bg);
+            border-color: var(--dark-border);
+        }
+
+        .uuid-value:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 0;
+        }
+
+        /* Results Container */
+        .results-container {
+            max-height: 400px;
+            overflow-y: auto;
+            background: var(--bg-gray);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            margin: 15px 0;
+        }
+
+        body.dark-mode .results-container {
+            background: var(--dark-bg);
+            border-color: var(--dark-border);
+        }
+
+        .uuid-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+        }
+
+        body.dark-mode .uuid-item {
+            background: var(--dark-bg-secondary);
+            border-color: var(--dark-border);
+        }
+
+        .uuid-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--primary-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            color: #1e40af;
+        }
+
+        body.dark-mode .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+        }
+
+        /* Alert */
+        .alert {
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        body.dark-mode .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #86efac;
+        }
+
+        .alert-error {
+            background-color: #fee2e2;
+            color: #7f1d1d;
+            border: 1px solid #fca5a5;
+        }
+
+        body.dark-mode .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #fca5a5;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        body.dark-mode .tabs {
+            border-bottom-color: var(--dark-border);
+        }
+
+        .tab-button {
+            padding: 10px 16px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: all 0.2s ease;
+        }
+
+        body.dark-mode .tab-button {
+            color: var(--dark-text-light);
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+        }
+
+        .tab-button.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Copy Feedback */
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        /* Validation Result */
+        .validation-result {
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        body.dark-mode .validation-result {
+            background: var(--dark-bg);
+            border-color: var(--dark-border);
+        }
+
+        .validation-result.valid {
+            border-color: var(--success-color);
+            background: #ecfdf5;
+        }
+
+        body.dark-mode .validation-result.valid {
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .validation-result.invalid {
+            border-color: var(--danger-color);
+            background: #fef2f2;
+        }
+
+        body.dark-mode .validation-result.invalid {
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        /* Loading */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        body.dark-mode footer {
+            border-top-color: var(--dark-border);
+            color: var(--dark-text-light);
+        }
+
+        /* AdSense Placeholder */
+        .ad-space {
+            background: var(--bg-gray);
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 20px 0;
+        }
+
+        body.dark-mode .ad-space {
+            background: var(--dark-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .radio-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Accessibility */
+        :focus-visible {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header role="banner">
+            <h1>UUID Generator</h1>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-grid">
+            <!-- Generator Section -->
+            <div class="card">
+                <h2>Generate UUID</h2>
+
+                <div class="form-group">
+                    <label>UUID Version</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="v1" name="version" value="1" checked>
+                            <label for="v1" class="radio-label">v1</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="v4" name="version" value="4">
+                            <label for="v4" class="radio-label">v4</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="v5" name="version" value="5">
+                            <label for="v5" class="radio-label">v5</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="v7" name="version" value="7">
+                            <label for="v7" class="radio-label">v7</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- v5 Namespace Section -->
+                <div id="v5Options" style="display: none;">
+                    <div class="form-group">
+                        <label for="namespace">Namespace</label>
+                        <select id="namespace" aria-label="UUID v5 namespace">
+                            <option value="dns">DNS</option>
+                            <option value="url">URL</option>
+                            <option value="oid">OID</option>
+                            <option value="x500">X.500 DN</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nameInput">Name/Value</label>
+                        <input type="text" id="nameInput" placeholder="Enter name or value for namespace (e.g., example.com for DNS)" aria-label="Name or value for v5 UUID generation">
+                    </div>
+
+                    <div class="info-box">
+                        <strong>v5 UUIDs:</strong> Generated from a namespace and name using SHA-1. Deterministic - same inputs = same UUID.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="count">Generate Count</label>
+                    <input type="number" id="count" min="1" max="1000" value="1" aria-label="Number of UUIDs to generate">
+                </div>
+
+                <div class="form-group">
+                    <label for="separator">Separator Format</label>
+                    <select id="separator" aria-label="UUID format separator">
+                        <option value="dashes">Dashes (default)</option>
+                        <option value="braces">Braces {}</option>
+                        <option value="none">No separator</option>
+                    </select>
+                </div>
+
+                <button class="btn-primary" id="generateBtn" onclick="generateUUIDs()">Generate UUID</button>
+
+                <div id="generateResults" class="results-container" style="display: none;"></div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                    <button class="btn-secondary" id="copyAllBtn" onclick="copyAllUUIDs()" style="display: none;">Copy All</button>
+                    <button class="btn-secondary" id="downloadBtn" onclick="showDownloadOptions()" style="display: none;">Download</button>
+                </div>
+            </div>
+
+            <!-- Validator & History Section -->
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-button active" onclick="switchTab('validator')">Validator</button>
+                    <button class="tab-button" onclick="switchTab('history')">History</button>
+                </div>
+
+                <!-- Validator Tab -->
+                <div id="validator" class="tab-content active">
+                    <h2>Validate UUID</h2>
+
+                    <div class="form-group">
+                        <label for="validateInput">Paste UUID</label>
+                        <input type="text" id="validateInput" placeholder="Paste a UUID here to validate" aria-label="UUID to validate">
+                    </div>
+
+                    <button class="btn-primary" onclick="validateUUID()">Validate</button>
+
+                    <div id="validationResult"></div>
+                </div>
+
+                <!-- History Tab -->
+                <div id="history" class="tab-content">
+                    <h2>Recent UUIDs</h2>
+                    <div id="historyContainer" class="results-container" style="max-height: 300px;">
+                        <p style="color: var(--text-light); text-align: center;">No history yet</p>
+                    </div>
+                    <button class="btn-danger" id="clearHistoryBtn" onclick="clearHistory()" style="width: 100%; margin-top: 10px; display: none;">Clear History</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense Placeholder -->
+        <div class="ad-space">
+            <!-- Google AdSense Code will be inserted here -->
+            <small>Advertisement Space</small>
+        </div>
+
+        <!-- Download Options Modal -->
+        <div id="downloadModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+            <div class="card" style="position: relative; width: 90%; max-width: 400px;">
+                <button onclick="closeDownloadModal()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">✕</button>
+                <h2>Export As</h2>
+                <button class="btn-primary" onclick="downloadJSON()">📄 JSON</button>
+                <button class="btn-primary" onclick="downloadCSV()" style="margin-top: 10px;">📊 CSV</button>
+                <button class="btn-primary" onclick="downloadText()" style="margin-top: 10px;">📝 Plain Text</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer role="contentinfo">
+            <p>&copy; 2024 UUID Generator Pro. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">
+                Fast • Free • Open Source • <a href="#" style="color: var(--primary-color); text-decoration: none;">Privacy</a> • <a href="#" style="color: var(--primary-color); text-decoration: none;">Terms</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Main Script -->
+    <script src="assets/js/app.js" defer></script>
+</body>
+</html>

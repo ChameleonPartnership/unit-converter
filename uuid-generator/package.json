@@ -1,0 +1,41 @@
+{
+  "name": "uuid-generator",
+  "version": "1.0.0",
+  "description": "Production-ready UUID/GUID generator. Support for v1, v4, v5, v7 with validation, export, and dark mode.",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "http-server . -p 8000",
+    "test": "jest",
+    "build": "echo 'Static site - no build needed'",
+    "lint": "eslint assets/js/*.js"
+  },
+  "keywords": [
+    "uuid",
+    "guid",
+    "generator",
+    "v1",
+    "v4",
+    "v5",
+    "v7",
+    "validator",
+    "online",
+    "free"
+  ],
+  "author": "UUID Generator Pro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/uuid-generator"
+  },
+  "homepage": "https://uuid-generator.pro",
+  "devDependencies": {
+    "@testing-library/dom": "^9.3.1",
+    "eslint": "^8.44.0",
+    "http-server": "^14.1.1",
+    "jest": "^29.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
