@@ -1,0 +1,50 @@
+# UUID Generator Pro
+
+> Free, browser-based UUID/GUID generation and validation tool supporting v1, v4, v5, and v7 versions.
+
+## What We Do
+
+UUID Generator Pro is a production-ready online tool for creating and validating universally unique identifiers. All generation is client-side using cryptographically secure randomness. We support all major UUID versions with batch generation, multiple export formats, and built-in validation.
+
+**Key features:** Generate v1 (time-based), v4 (random), v5 (deterministic), v7 (sortable), validate UUIDs, export as JSON/CSV/text, dark mode, history tracking, copy-to-clipboard.
+
+## Key Pages
+
+- [Home](https://uuid-generator.pro/) – Main tool interface
+- [About](https://uuid-generator.pro/about) – About UUID Generator Pro
+- [FAQ](https://uuid-generator.pro/#faq) – Frequently asked questions about UUIDs
+
+## Use Cases
+
+- **Software Development:** Generate unique identifiers for databases, APIs, and distributed systems
+- **DevOps:** Create identifiers for infrastructure, containers, and automation workflows
+- **Data Science:** Batch-generate UUIDs for data anonymisation and linking
+- **Security:** Generate v5 UUIDs for deterministic, reproducible identifier creation
+- **Startups:** Use v7 sortable UUIDs in modern microservices architectures
+
+## Technical Details
+
+- **Standard:** RFC 4122 compliant
+- **Security:** Web Cryptography API (crypto.getRandomValues) for cryptographically secure generation
+- **Privacy:** 100% client-side processing — no data transmission or server logs
+- **Browser Support:** All modern browsers (Chrome, Firefox, Safari, Edge)
+- **Accessibility:** WCAG 2.1 compliant with dark mode support
+
+## UUID Versions Supported
+
+- **v1:** Time-based UUID (timestamp + MAC simulation)
+- **v4:** Random UUID (most commonly used)
+- **v5:** SHA-1 deterministic from namespace + name (DNS, URL, OID, X.500 DN)
+- **v7:** Unix epoch sortable UUID (modern alternative to v1)
+
+## AI-Friendly Content Structure
+
+This site includes:
+- Structured FAQ section with JSON-LD FAQPage schema
+- Question-based headings optimised for AI citations
+- Direct, concise answers following each question
+- Detailed UUID version comparisons
+- Definition-based opener content ("A UUID is...")
+- Multiple export formats (JSON, CSV, plaintext)
+- Dark mode support for readability
+- Comprehensive schema markup (Organization, SoftwareApplication, FAQPage)

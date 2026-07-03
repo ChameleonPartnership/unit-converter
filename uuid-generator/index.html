@@ -8,6 +8,7 @@
     <meta name="author" content="UUID Generator Pro">
     <meta name="robots" content="index, follow">
     <meta name="canonical" href="https://uuid-generator.pro/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%233b82f6'/%3E%3Ctext x='50' y='66' font-size='46' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EID%3C/text%3E%3C/svg%3E">
     
     <!-- Open Graph Tags -->
     <meta property="og:title" content="UUID Generator - Free Online Tool">
@@ -24,6 +25,7 @@
     <meta name="twitter:image" content="https://uuid-generator.pro/og-image.png">
     
     <!-- Structured Data (JSON-LD) -->
+    <!-- SoftwareApplication Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -41,7 +43,76 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "UUID Generator Pro",
+            "url": "https://uuid-generator.pro/"
         }
+    }
+    </script>
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "UUID Generator Pro",
+        "url": "https://uuid-generator.pro/",
+        "description": "Professional online UUID/GUID generation and validation tools",
+        "sameAs": [
+            "https://github.com/yourusername/uuid-generator"
+        ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is a UUID?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A UUID (Universally Unique Identifier) is a 128-bit unique identifier used in software applications. UUID v4 is the most commonly used version, generating random identifiers with extremely low collision probability."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the difference between UUID and GUID?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "GUID (Globally Unique Identifier) is Microsoft's implementation of the UUID standard. They are functionally equivalent and can be used interchangeably. Both follow RFC 4122 specification."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which UUID version should I use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Use UUID v4 for most applications (random generation). Use v1 for time-based needs. Use v5 when you need deterministic generation from a namespace. Use v7 for sortable, Unix epoch-based identifiers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is it safe to use this generator for production?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. This generator uses the Web Cryptography API (crypto.getRandomValues) which is cryptographically secure. All UUIDs are generated client-side with no data transmission."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I export generated UUIDs?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Generated UUIDs can be exported in multiple formats: JSON, CSV, or plain text. Use the Download button after generation."
+                }
+            }
+        ]
     }
     </script>
     
@@ -695,6 +766,8 @@
             border-width: 0;
         }
     </style>
+    <!-- Google AdSense -->
+    <!-- AdSense intentionally disabled for local/static tool runtime stability. -->
 </head>
 <body>
     <div class="container">
@@ -812,6 +885,126 @@
             </div>
         </div>
 
+        <!-- About This Tool Section -->
+        <section style="margin: 60px 0; padding: 40px; background: var(--bg-gray); border-radius: 12px;" role="region" aria-label="About UUID Generator">
+            <h2 style="margin-top: 0;">About UUID Generator</h2>
+            <p>
+                <strong>UUID Generator</strong> is a free, browser-based tool for creating universally unique identifiers instantly. Whether you need random v4 UUIDs, time-based v1 identifiers, deterministic v5 generation, or sortable v7 UUIDs, this tool supports all major UUID versions.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 25px;">
+                <div>
+                    <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: var(--primary-color);">🚀 Fast & Secure</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-light);">All UUIDs generated client-side using cryptographically secure Web Cryptography API. No data transmission.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: var(--primary-color);">📊 Multiple Formats</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-light);">Export generated UUIDs as JSON, CSV, or plain text. Batch generate up to 1,000 UUIDs at once.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 1rem; margin: 0 0 10px 0; color: var(--primary-color);">✅ Validator Built-in</h3>
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-light);">Validate any UUID format and detect its version. Supports dashes, braces, and raw hex formats.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UUID Versions Reference -->
+        <section style="margin: 60px 0;" role="region" aria-label="UUID Versions Guide">
+            <h2>Understanding UUID Versions</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div class="card" style="border-left: 4px solid #3b82f6;">
+                    <h3 style="margin-top: 0; color: #3b82f6;">UUID v1: Time-Based</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Generated using timestamp (date/time) and MAC address. Sortable by creation time. Best for sequential application logs.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin: 0;"><strong>Use case:</strong> Database entries that need chronological ordering</p>
+                </div>
+                <div class="card" style="border-left: 4px solid #8b5cf6;">
+                    <h3 style="margin-top: 0; color: #8b5cf6;">UUID v4: Random</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Pure random generation. Most commonly used. Extremely low collision probability. No timestamp or identifying information.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin: 0;"><strong>Use case:</strong> Default choice for most applications (web apps, APIs, databases)</p>
+                </div>
+                <div class="card" style="border-left: 4px solid #10b981;">
+                    <h3 style="margin-top: 0; color: #10b981;">UUID v5: Name-Based (SHA-1)</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Deterministic: same input always generates same UUID. Uses SHA-1 hash of namespace + name. Supports DNS, URL, OID, X.500 DN namespaces.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin: 0;"><strong>Use case:</strong> Reproducible IDs from email addresses or domain names</p>
+                </div>
+                <div class="card" style="border-left: 4px solid #f59e0b;">
+                    <h3 style="margin-top: 0; color: #f59e0b;">UUID v7: Unix Epoch (Sortable)</h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6;">
+                        Modern sortable format using Unix timestamp. Better for distributed systems and databases. More collision-resistant than v1 with time-ordering benefits.
+                    </p>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin: 0;"><strong>Use case:</strong> Modern databases requiring sortable IDs (Postgres, MongoDB)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section style="margin: 60px 0;" role="region" aria-label="Frequently Asked Questions">
+            <h2>Frequently Asked Questions</h2>
+            <div style="display: grid; gap: 20px;">
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;" open>
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        What is a UUID?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        A UUID (Universally Unique Identifier) is a 128-bit unique identifier defined by RFC 4122. It's represented as a 36-character string with hyphens (e.g., 550e8400-e29b-41d4-a716-446655440000). UUIDs are used to uniquely identify objects, database records, and transactions across distributed systems.
+                    </p>
+                </details>
+
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        What is the difference between UUID and GUID?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        GUID (Globally Unique Identifier) is Microsoft's term for UUID. They are the same standard (RFC 4122). Microsoft uses GUID in Windows and .NET. UUID is the open standard name. Both terms refer to identical functionality and can be used interchangeably.
+                    </p>
+                </details>
+
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        Which UUID version should I use?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        <strong>v4 (Random):</strong> Use by default. Best for most applications. Recommended for 99% of use cases.
+                        <br><strong>v1 (Time-based):</strong> Use when you need temporal ordering and the MAC address won't compromise privacy.
+                        <br><strong>v5 (SHA-1 Hash):</strong> Use when you need reproducible IDs from existing data (emails, domain names).
+                        <br><strong>v7 (Unix Epoch):</strong> Use in modern databases that require sortable IDs with Unix timestamp prefixes.
+                    </p>
+                </details>
+
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        Is it safe to use this generator for production?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        Yes, absolutely. This generator uses the Web Cryptography API (crypto.getRandomValues()), which provides cryptographically secure randomness in all modern browsers. All UUID generation happens client-side — nothing is transmitted to servers. Your data never leaves your device.
+                    </p>
+                </details>
+
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        Can I export generated UUIDs?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        Yes. After generating UUIDs, use the Download button to export in your preferred format: JSON (structured data), CSV (spreadsheet-compatible), or plain text (one UUID per line). You can also copy individual UUIDs or all at once.
+                    </p>
+                </details>
+
+                <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
+                    <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
+                        How many UUIDs can I generate at once?
+                    </summary>
+                    <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
+                        You can generate up to 1,000 UUIDs in a single batch. This is useful for bulk operations or populating databases. All generation happens instantly in your browser.
+                    </p>
+                </details>
+            </div>
+        </section>
+
         <!-- AdSense Placeholder -->
         <div class="ad-space">
             <!-- Google AdSense Code will be inserted here -->
@@ -833,7 +1026,15 @@
         <footer role="contentinfo">
             <p>&copy; 2024 UUID Generator Pro. All rights reserved.</p>
             <p style="margin-top: 10px; font-size: 0.85rem;">
-                Fast • Free • Open Source • <a href="#" style="color: var(--primary-color); text-decoration: none;">Privacy</a> • <a href="#" style="color: var(--primary-color); text-decoration: none;">Terms</a>
+                <span>Fast • Free • Secure • </span>
+                <a href="#privacy" style="color: var(--primary-color); text-decoration: none;">Privacy</a> 
+                <span> • </span>
+                <a href="#terms" style="color: var(--primary-color); text-decoration: none;">Terms</a>
+                <span> • </span>
+                <a href="https://github.com" style="color: var(--primary-color); text-decoration: none;">GitHub</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 0.8rem; color: var(--text-light);">
+                Built with Web Cryptography API • Supports RFC 4122 UUID standard • No data collection
             </p>
         </footer>
     </div>
