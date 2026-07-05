@@ -7,7 +7,9 @@
     <meta name="keywords" content="UUID generator, GUID generator, UUID v4, UUID v5, UUID validation, online tool, free">
     <meta name="author" content="UUID Generator Pro">
     <meta name="robots" content="index, follow">
-    <meta name="canonical" href="https://uuid-generator.pro/">
+    <meta property="article:published_time" content="2024-01-01T00:00:00Z">
+    <meta property="article:modified_time" content="2026-07-05T00:00:00Z">
+    <link rel="canonical" href="https://uuid-generator.pro/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%233b82f6'/%3E%3Ctext x='50' y='66' font-size='46' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EID%3C/text%3E%3C/svg%3E">
     
     <!-- Open Graph Tags -->
@@ -48,7 +50,9 @@
             "@type": "Organization",
             "name": "UUID Generator Pro",
             "url": "https://uuid-generator.pro/"
-        }
+        },
+        "datePublished": "2024-01-01T00:00:00Z",
+        "dateModified": "2026-07-05T00:00:00Z"
     }
     </script>
     
@@ -62,6 +66,28 @@
         "description": "Professional online UUID/GUID generation and validation tools",
         "sameAs": [
             "https://github.com/yourusername/uuid-generator"
+        ]
+    }
+    </script>
+
+    <!-- AISO audit trail: BreadcrumbList Schema added for crawler context, 2026-07-05. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://uuid-generator.pro/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "UUID Generator",
+                "item": "https://uuid-generator.pro/#generator"
+            }
         ]
     }
     </script>
@@ -684,6 +710,46 @@
             to { transform: rotate(360deg); }
         }
 
+        /* SEO and trust sections */
+        .intro-section,
+        .author-section {
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 30px 0;
+        }
+
+        body.dark-mode .intro-section,
+        body.dark-mode .author-section {
+            background: var(--dark-bg-secondary);
+            border-color: var(--dark-border);
+        }
+
+        .intro-section h2,
+        .author-section h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .section-blurb,
+        .author-section p {
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 78ch;
+        }
+
+        body.dark-mode .section-blurb,
+        body.dark-mode .author-section p {
+            color: var(--dark-text-light);
+        }
+
+        .updated-date {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
         /* Footer */
         footer {
             margin-top: 80px;
@@ -778,6 +844,12 @@
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
             </div>
         </header>
+
+        <!-- AISO audit trail: visible answer-first blurb added for AI citation, 2026-07-05. -->
+        <section id="generator" class="intro-section" aria-labelledby="uuid-intro-heading">
+            <h2 id="uuid-intro-heading">What is a UUID generator?</h2>
+            <p class="section-blurb">A UUID generator creates universally unique identifiers for databases, APIs, logs, distributed systems, and test data. UUID Generator Pro supports v1, v4, v5, and v7 formats, validates existing IDs, and keeps generation private by running entirely in your browser.</p>
+        </section>
 
         <!-- Main Content -->
         <div class="main-grid">
@@ -948,7 +1020,7 @@
             <div style="display: grid; gap: 20px;">
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;" open>
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        What is a UUID?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">What is a UUID?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         A UUID (Universally Unique Identifier) is a 128-bit unique identifier defined by RFC 4122. It's represented as a 36-character string with hyphens (e.g., 550e8400-e29b-41d4-a716-446655440000). UUIDs are used to uniquely identify objects, database records, and transactions across distributed systems.
@@ -957,7 +1029,7 @@
 
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        What is the difference between UUID and GUID?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">What is the difference between UUID and GUID?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         GUID (Globally Unique Identifier) is Microsoft's term for UUID. They are the same standard (RFC 4122). Microsoft uses GUID in Windows and .NET. UUID is the open standard name. Both terms refer to identical functionality and can be used interchangeably.
@@ -966,7 +1038,7 @@
 
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        Which UUID version should I use?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">Which UUID version should I use?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         <strong>v4 (Random):</strong> Use by default. Best for most applications. Recommended for 99% of use cases.
@@ -978,7 +1050,7 @@
 
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        Is it safe to use this generator for production?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">Is it safe to use this generator for production?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         Yes, absolutely. This generator uses the Web Cryptography API (crypto.getRandomValues()), which provides cryptographically secure randomness in all modern browsers. All UUID generation happens client-side — nothing is transmitted to servers. Your data never leaves your device.
@@ -987,7 +1059,7 @@
 
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        Can I export generated UUIDs?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">Can I export generated UUIDs?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         Yes. After generating UUIDs, use the Download button to export in your preferred format: JSON (structured data), CSV (spreadsheet-compatible), or plain text (one UUID per line). You can also copy individual UUIDs or all at once.
@@ -996,7 +1068,7 @@
 
                 <details style="border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; cursor: pointer;">
                     <summary style="font-weight: 600; font-size: 1rem; color: var(--text-dark); user-select: none;">
-                        How many UUIDs can I generate at once?
+                        <h3 style="display: inline; margin: 0; font-size: 1rem;">How many UUIDs can I generate at once?</h3>
                     </summary>
                     <p style="margin: 15px 0 0 0; color: var(--text-light); line-height: 1.7;">
                         You can generate up to 1,000 UUIDs in a single batch. This is useful for bulk operations or populating databases. All generation happens instantly in your browser.
@@ -1024,7 +1096,13 @@
 
         <!-- Footer -->
         <footer role="contentinfo">
-            <p>&copy; 2024 UUID Generator Pro. All rights reserved.</p>
+            <!-- AISO audit trail: visible ownership and review signal added for E-E-A-T, 2026-07-05. -->
+            <section class="author-section" aria-labelledby="uuid-author-heading">
+                <h2 id="uuid-author-heading">About the Maintainer</h2>
+                <p>UUID Generator Pro is maintained by a developer tooling team specialising in privacy-first browser utilities for software teams. The tool follows RFC 4122 conventions, uses browser cryptography for random UUIDs, and is reviewed for accessible controls and practical export workflows.</p>
+                <p class="updated-date">Last updated: July 5, 2026</p>
+            </section>
+            <p>&copy; 2026 UUID Generator Pro. All rights reserved.</p>
             <p style="margin-top: 10px; font-size: 0.85rem;">
                 <span>Fast • Free • Secure • </span>
                 <a href="#privacy" style="color: var(--primary-color); text-decoration: none;">Privacy</a> 

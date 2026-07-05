@@ -2,7 +2,7 @@
 
 **URL:** https://uuid-generator.pro/  
 **Type:** Web Application (UtilityApplication)  
-**Last Updated:** 2024  
+**Last Updated:** 2026-07-05  
 **License:** MIT  
 
 ---
