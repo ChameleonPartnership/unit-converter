@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free volume converter. Convert millilitres, litres, US fluid ounces, cups, pints and US gallons instantly. Perfect for cooking, baking and fuel. No signup required." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Volume Converter - Litres to Gallons, Cups to Millilitres & More</title>
+    <link rel="canonical" href="https://convert-unit.pro/volume-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Volume Converter - Free Litres to Gallons & More" />
+    <meta property="og:description" content="Convert ml, litres, fluid ounces, cups, pints and gallons instantly. Free online volume converter with dark mode." />
+    <meta property="og:url" content="https://convert-unit.pro/volume-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Volume Converter - Litres to Gallons, Cups to Millilitres & More" />
+    <meta name="twitter:description" content="Convert ml, litres, fluid ounces, cups, pints and gallons instantly. Free online volume converter with dark mode." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Volume Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert millilitres, litres, US fluid ounces, cups, pints, and US gallons instantly.",
+        "url": "https://convert-unit.pro/volume-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric and imperial volume conversions</p>
+          <h1>Volume Converter</h1>
+          <p>
+            Convert millilitres, litres, US fluid ounces, cups, pints and US gallons instantly with our free online volume converter. No signup required, works offline.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Volume</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 L = 0.2642 gal</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+
+        <h2>How to Convert Volume Units</h2>
+        <p>
+          Volume conversions are essential for cooking, baking, mixing drinks, measuring fuel, and
+          understanding product sizes. The metric system (millilitres and litres) is used for most
+          scientific and everyday measurement around the world, while US customary units (cups,
+          pints, fluid ounces, gallons) dominate American recipes and product labelling. The UK adds
+          its own twist: an imperial pint is 568 ml, while a US pint is 473 ml.
+        </p>
+
+        <h3>Key Volume Conversion Formulas</h3>
+        <p><strong>1 US gallon = 3.78541 litres</strong></p>
+        <p><strong>1 US pint = 473.18 ml</strong> (an imperial pint is 568.26 ml)</p>
+        <p><strong>1 US cup = 236.59 ml</strong></p>
+        <p><strong>1 US fl oz = 29.57 ml</strong></p>
+        <p>
+          This converter uses US customary units for cups, pints, fluid ounces and gallons, which are
+          the versions used in American recipes and by most international standards bodies when
+          quoting US measures. Litres and millilitres are the same worldwide.
+        </p>
+
+        <h2>Common Volume Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+<tr style="border-bottom: 1px solid var(--color-border);">
+<th style="text-align: left; padding: 10px;">Unit</th>
+<th style="text-align: left; padding: 10px;">Equals</th>
+<th style="text-align: left; padding: 10px;">Real-world reference</th>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 litre (L)</td>
+<td style="padding: 10px;">33.81 US fl oz</td>
+<td style="padding: 10px;">A large bottle of soft drink</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 US gallon</td>
+<td style="padding: 10px;">3.785 L</td>
+<td style="padding: 10px;">A gallon of milk in the US</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 US cup</td>
+<td style="padding: 10px;">236.6 ml</td>
+<td style="padding: 10px;">Standard US measuring cup</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 US pint</td>
+<td style="padding: 10px;">473.2 ml</td>
+<td style="padding: 10px;">A US pint of beer (vs 568 ml in the UK)</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 US fl oz</td>
+<td style="padding: 10px;">29.57 ml</td>
+<td style="padding: 10px;">A shot glass is roughly 1.5 fl oz</td>
+</tr>
+<tr style="">
+<td style="padding: 10px;">1 millilitre (ml)</td>
+<td style="padding: 10px;">0.034 US fl oz</td>
+<td style="padding: 10px;">20 drops of water</td>
+</tr>
+</table>
+
+        <h2>Where Volume Conversion Matters</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Cooking and baking:</strong> US recipes use cups and fluid ounces; European recipes use grams and millilitres. Getting the conversion right is the difference between a cake and a pancake</li>
+          <li><strong>Fuel economy:</strong> Compare miles per gallon with litres per 100 km when evaluating vehicles</li>
+          <li><strong>Beverages:</strong> Understanding pint and litre sizes when buying drinks in different countries</li>
+          <li><strong>Medicine and chemistry:</strong> Precise millilitre measurements for dosing and experiments</li>
+          <li><strong>Gardening and DIY:</strong> Mixing chemicals, paints and fertilisers by volume</li>
+        </ul>
+
+        <h2>US vs Imperial Volume Units</h2>
+        <p>
+          The most common source of confusion in volume conversion is the difference between US and
+          imperial measures. Both systems have units called pints, fluid ounces and gallons, but they
+          are different sizes. A US gallon is 3.785 litres while an imperial gallon is 4.546 litres
+          (about 20% larger). A US fluid ounce is 29.57 ml while an imperial fluid ounce is 28.41 ml.
+          This tool uses US customary units throughout, so results match American recipes, US product
+          labels, and the units used in most international reference tables.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many litres are in a gallon?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One US gallon is 3.78541 litres. To convert gallons to litres, multiply by 3.785. To convert litres to gallons, divide by 3.785. Our <a href="/volume-converter/">volume converter</a> handles this instantly.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many millilitres are in a cup?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One US cup is exactly 236.588 millilitres, usually rounded to 240 ml in recipes. Note that metric cups in Australia and New Zealand are 250 ml.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Is a UK pint bigger than a US pint?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes. An imperial (UK) pint is 568 ml while a US pint is 473 ml, so a UK pint is about 20% larger. This is why a pint of beer differs between the two countries.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many cups are in a litre?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One litre equals approximately 4.23 US cups. To convert litres to cups, multiply by 4.23. For cooking, 1 litre is usually treated as 4 cups.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How do I convert fluid ounces to millilitres?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Multiply the number of US fluid ounces by 29.57 to get millilitres. For example, 8 fl oz (one US cup) is 236.6 ml.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does the volume converter work offline?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes, the converter runs entirely in your browser. Once loaded, all conversions happen locally with no server calls and no data collection.</p>
+</div></div>
+</div>
+    
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

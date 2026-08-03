@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free length converter. Convert millimetres, centimetres, metres, kilometres, inches, feet, yards and miles instantly. No signup, works offline." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Length Converter - Metres to Feet, cm to Inches & More</title>
+    <link rel="canonical" href="https://convert-unit.pro/length-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Length Converter - Free Instant Conversions" />
+    <meta property="og:description" content="Convert mm, cm, m, km, inches, feet, yards and miles instantly. Free online length converter with dark mode." />
+    <meta property="og:url" content="https://convert-unit.pro/length-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Length Converter - Metres to Feet, cm to Inches & More" />
+    <meta name="twitter:description" content="Convert mm, cm, m, km, inches, feet, yards and miles instantly. Free online length converter with dark mode." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Length Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert millimetres, centimetres, metres, kilometres, inches, feet, yards, and miles instantly.",
+        "url": "https://convert-unit.pro/length-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric and imperial length conversions</p>
+          <h1>Length Converter</h1>
+          <p>
+            Convert millimetres, centimetres, metres, kilometres, inches, feet, yards and miles instantly with our free online length converter. No signup required.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Length</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 m = 100 cm</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+
+        <h2>How to Convert Length Units</h2>
+        <p>
+          Length conversion is one of the most common measurement tasks, whether you are following a
+          DIY plan, ordering materials, sewing, or comparing product dimensions across countries that
+          use different systems. The metric system (millimetres, centimetres, metres, kilometres) is
+          used almost everywhere in the world, while imperial units (inches, feet, yards, miles) remain
+          standard in the United States and are still widely used in the UK for many everyday purposes.
+        </p>
+
+        <h3>Key Length Conversion Formulas</h3>
+        <p><strong>1 inch = 2.54 cm</strong> (exact definition)</p>
+        <p><strong>1 foot = 30.48 cm</strong>, so metres = feet × 0.3048</p>
+        <p><strong>1 yard = 0.9144 m</strong></p>
+        <p><strong>1 mile = 1.60934 km</strong></p>
+        <p>
+          To convert from any unit to any other, the calculator above uses standard SI factors:
+          every unit is expressed relative to the metre, then converted to your target unit. For
+          example, to convert inches to centimetres, multiply the number of inches by 2.54.
+        </p>
+
+        <h2>Common Length Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+<tr style="border-bottom: 1px solid var(--color-border);">
+<th style="text-align: left; padding: 10px;">Unit</th>
+<th style="text-align: left; padding: 10px;">Equals</th>
+<th style="text-align: left; padding: 10px;">Real-world reference</th>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 inch (in)</td>
+<td style="padding: 10px;">2.54 cm</td>
+<td style="padding: 10px;">Width of a standard credit card</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 foot (ft)</td>
+<td style="padding: 10px;">30.48 cm</td>
+<td style="padding: 10px;">Roughly the length of a football boot</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 yard (yd)</td>
+<td style="padding: 10px;">0.9144 m</td>
+<td style="padding: 10px;">Distance from nose to fingertips on an outstretched arm</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 metre (m)</td>
+<td style="padding: 10px;">3.281 ft</td>
+<td style="padding: 10px;">Just over three feet</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 kilometre (km)</td>
+<td style="padding: 10px;">0.6214 miles</td>
+<td style="padding: 10px;">A 10 km run is about 6.2 miles</td>
+</tr>
+<tr style="">
+<td style="padding: 10px;">1 mile (mi)</td>
+<td style="padding: 10px;">1.609 km</td>
+<td style="padding: 10px;">16 city blocks in Manhattan</td>
+</tr>
+</table>
+
+        <h2>When Do You Need a Length Converter?</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Home improvement:</strong> Converting furniture or room dimensions between metric and imperial when following international plans</li>
+          <li><strong>Fashion and tailoring:</strong> Fabric is sold by the metre in Europe and by the yard in the US; patterns mix inches and centimetres</li>
+          <li><strong>Travel and fitness:</strong> Understanding distances in kilometres versus miles when running, cycling or driving abroad</li>
+          <li><strong>Shipping and logistics:</strong> Parcel size limits are quoted in different units depending on the carrier and country</li>
+          <li><strong>Construction:</strong> Building materials are specified in millimetres and metres on most projects, but imperial sizes still appear on tools and fittings</li>
+        </ul>
+
+        <h2>Metric vs Imperial: A Quick History</h2>
+        <p>
+          The metric system was developed in France in the 1790s and is now the official system of
+          measurement in every country except the United States, Liberia and Myanmar. The metre was
+          originally defined as one ten-millionth of the distance from the equator to the North Pole.
+          Today it is defined by the speed of light, which makes it completely universal and precise.
+          Imperial units grew from older English units based on human body parts: the inch was
+          originally the width of a thumb, and the foot the length of a man's foot. That is why exact
+          conversions matter: our calculator uses the modern exact definitions, not the historical
+          approximations.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many centimetres are in an inch?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">1 inch is exactly 2.54 centimetres. To convert inches to centimetres, multiply by 2.54. To go the other way, divide by 2.54. Our <a href="/length-converter/">length converter</a> does this instantly for any value.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How do I convert feet to metres?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Multiply the number of feet by 0.3048 to get metres. For example, 6 feet × 0.3048 = 1.829 metres (about 183 cm). This is the exact conversion used by the calculator.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many metres are in a mile?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One mile is exactly 1,609.344 metres, which is 1.609 km. This is why a 5 km run is roughly 3.1 miles and a marathon (42.195 km) is 26.2 miles.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Is a yard longer than a metre?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">No. One yard is 0.9144 metres, so a metre is about 9.4% longer than a yard. One metre equals 1.094 yards. In American football, the field is 100 yards (91.44 metres) long.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does the length converter work offline?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes. All conversions run locally in your browser using exact SI conversion factors, so the page works offline once loaded and never sends your data to a server.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is the difference between a nautical mile and a statute mile?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">A statute (land) mile is 1,609.344 metres. A nautical mile is 1,852 metres, based on one minute of latitude, and is used in aviation and maritime navigation. This tool converts statute miles; for nautical miles, multiply statute miles by 0.869.</p>
+</div></div>
+</div>
+    
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

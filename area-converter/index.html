@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free area converter. Convert square metres, square feet, square kilometres, acres and more instantly. Ideal for real estate, flooring and land. No signup required." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Area Converter - Square Metres to Square Feet, Acres & More</title>
+    <link rel="canonical" href="https://convert-unit.pro/area-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Area Converter - Free m² to ft² & More" />
+    <meta property="og:description" content="Convert m², ft², acres, hectares and more instantly. Free online area converter with dark mode." />
+    <meta property="og:url" content="https://convert-unit.pro/area-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Area Converter - Square Metres to Square Feet, Acres & More" />
+    <meta name="twitter:description" content="Convert m², ft², acres, hectares and more instantly. Free online area converter with dark mode." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Area Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert square millimetres, square centimetres, square metres, square kilometres, square feet, and acres instantly.",
+        "url": "https://convert-unit.pro/area-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric and imperial area conversions</p>
+          <h1>Area Converter</h1>
+          <p>
+            Convert square metres, square feet, square kilometres, acres and more instantly with our free online area converter. No signup required, works offline.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Area</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 m² = 10.764 ft²</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+
+        <h2>How to Convert Area Units</h2>
+        <p>
+          Area conversion is essential for real estate, flooring, painting, landscaping and
+          construction. Property listings use square metres across Europe and most of the world,
+          square feet in the US and many Asian markets, and acres for land in the UK, US and
+          Ireland. This converter links all the common units so you can compare property sizes and
+          material quantities without manual maths.
+        </p>
+
+        <h3>Key Area Conversion Formulas</h3>
+        <p><strong>1 m² = 10.7639 ft²</strong></p>
+        <p><strong>1 ft² = 0.0929 m²</strong></p>
+        <p><strong>1 acre = 4,046.86 m²</strong> (43,560 ft²)</p>
+        <p><strong>1 km² = 100 hectares = 1,000,000 m²</strong></p>
+        <p>
+          Area units are squares of length units, so the conversion factors are the squares of the
+          length factors. That is why 1 metre is 3.281 feet but 1 square metre is 10.764 square feet
+          (3.281 squared). The calculator applies these squared factors automatically, so you never
+          need to remember whether to multiply or square.
+        </p>
+
+        <h2>Common Area Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+<tr style="border-bottom: 1px solid var(--color-border);">
+<th style="text-align: left; padding: 10px;">Unit</th>
+<th style="text-align: left; padding: 10px;">Equals</th>
+<th style="text-align: left; padding: 10px;">Real-world reference</th>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 square metre (m²)</td>
+<td style="padding: 10px;">10.764 ft²</td>
+<td style="padding: 10px;">Roughly the area of a standard doormat</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 square foot (ft²)</td>
+<td style="padding: 10px;">0.0929 m²</td>
+<td style="padding: 10px;">A US letter sheet of paper is about 0.93 ft²</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 acre</td>
+<td style="padding: 10px;">4,047 m² / 0.405 ha</td>
+<td style="padding: 10px;">About the size of an American football field</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 hectare (ha)</td>
+<td style="padding: 10px;">10,000 m² / 2.471 acres</td>
+<td style="padding: 10px;">A football (soccer) pitch is about 0.7 ha</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 square kilometre (km²)</td>
+<td style="padding: 10px;">247.1 acres</td>
+<td style="padding: 10px;">A small town centre</td>
+</tr>
+<tr style="">
+<td style="padding: 10px;">100 m²</td>
+<td style="padding: 10px;">1,076 ft²</td>
+<td style="padding: 10px;">A typical two-bedroom flat in the UK</td>
+</tr>
+</table>
+
+        <h2>Practical Uses for an Area Converter</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Real estate:</strong> Comparing flat sizes listed in m² versus ft² when moving between countries or browsing international listings</li>
+          <li><strong>Flooring and tiling:</strong> Calculating how much flooring or paint you need when product coverage is quoted per m² or per ft²</li>
+          <li><strong>Gardening and land:</strong> Understanding plot sizes in acres, hectares or square metres for buying or planning</li>
+          <li><strong>Construction:</strong> Quoting and comparing building footprints across metric and imperial specifications</li>
+          <li><strong>Moving house:</strong> Converting floor areas so furniture layouts make sense across measurement systems</li>
+        </ul>
+
+        <h2>Acres, Hectares and Football Pitches</h2>
+        <p>
+          The acre has been used for land measurement for over a thousand years. It was originally
+          defined as the amount of land a team of oxen could plough in a day, and later standardised
+          as 4,840 square yards (43,560 square feet). The hectare, by contrast, is a clean metric
+          unit: exactly 10,000 square metres, or 100 metres by 100 metres. Because both units appear
+          in property and agricultural contexts around the world, conversions between them are
+          constant sources of questions, and this tool settles them instantly with exact factors.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many square feet are in a square metre?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One square metre equals 10.7639 square feet. To convert m² to ft², multiply by 10.764. To convert ft² to m², divide by 10.764. Use our <a href="/area-converter/">area converter</a> for instant results.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many square metres are in an acre?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One acre is 4,046.86 square metres, or 0.4047 hectares. A typical UK suburban garden is between 0.1 and 0.25 acres.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is the difference between an acre and a hectare?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">A hectare is 2.471 acres, or 10,000 square metres. The hectare is the standard metric unit for land; the acre is the standard imperial unit. Roughly, 2.5 acres equal 1 hectare.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How do I convert square feet to square metres?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Multiply the area in square feet by 0.0929 to get square metres. For example, a 1,000 ft² flat is 92.9 m².</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Why isn't 1 m² equal to 3.28 ft²?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Because area is two-dimensional. 1 metre is 3.281 feet, but 1 square metre is 3.281 × 3.281 = 10.764 square feet. You must square the length conversion factor.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does the area converter work offline?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes. All conversions run locally in your browser with exact factors, so the tool works offline and no data leaves your device.</p>
+</div></div>
+</div>
+    
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free speed converter. Convert metres per second, kilometres per hour, miles per hour and knots instantly. Ideal for driving, aviation and weather. No signup required." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Speed Converter - MPH to KMH, Knots to MPH & More</title>
+    <link rel="canonical" href="https://convert-unit.pro/speed-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Speed Converter - Free MPH to KMH & More" />
+    <meta property="og:description" content="Convert m/s, km/h, mph and knots instantly. Free online speed converter with dark mode." />
+    <meta property="og:url" content="https://convert-unit.pro/speed-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Speed Converter - MPH to KMH, Knots to MPH & More" />
+    <meta name="twitter:description" content="Convert m/s, km/h, mph and knots instantly. Free online speed converter with dark mode." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Speed Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert metres per second, kilometres per hour, miles per hour, and knots instantly.",
+        "url": "https://convert-unit.pro/speed-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric and imperial speed conversions</p>
+          <h1>Speed Converter</h1>
+          <p>
+            Convert metres per second, kilometres per hour, miles per hour and knots instantly with our free online speed converter. No signup required, works offline.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Speed</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 km/h = 0.6214 mph</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+
+        <h2>How to Convert Speed Units</h2>
+        <p>
+          Speed conversions are part of everyday driving, running, aviation and weather reporting.
+          Speed limits are in miles per hour in the US and UK, kilometres per hour across Europe and
+          most of the world, and knots in aviation and maritime contexts. This converter handles all
+          four common units so you can compare speeds across countries and disciplines instantly.
+        </p>
+
+        <h3>Key Speed Conversion Formulas</h3>
+        <p><strong>1 km/h = 0.621371 mph</strong></p>
+        <p><strong>1 mph = 1.60934 km/h</strong></p>
+        <p><strong>1 knot = 1.852 km/h</strong> (one nautical mile per hour)</p>
+        <p><strong>1 m/s = 3.6 km/h</strong></p>
+        <p>
+          Every unit in this converter is expressed relative to metres per second (the SI unit of
+          speed), then converted to your target unit. This guarantees consistent results: whether you
+          convert mph to knots or km/h to m/s, the maths uses exact factors with no rounding drift.
+        </p>
+
+        <h2>Common Speed Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+<tr style="border-bottom: 1px solid var(--color-border);">
+<th style="text-align: left; padding: 10px;">Speed</th>
+<th style="text-align: left; padding: 10px;">Equals</th>
+<th style="text-align: left; padding: 10px;">Real-world reference</th>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">60 mph</td>
+<td style="padding: 10px;">96.6 km/h</td>
+<td style="padding: 10px;">Typical UK motorway speed limit</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">100 km/h</td>
+<td style="padding: 10px;">62.1 mph</td>
+<td style="padding: 10px;">Common European motorway limit</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">70 mph</td>
+<td style="padding: 10px;">112.7 km/h</td>
+<td style="padding: 10px;">UK dual carriageway limit</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">10 knots</td>
+<td style="padding: 10px;">18.5 km/h</td>
+<td style="padding: 10px;">A brisk sailing boat speed</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 m/s</td>
+<td style="padding: 10px;">3.6 km/h</td>
+<td style="padding: 10px;">A gentle walking pace</td>
+</tr>
+<tr style="">
+<td style="padding: 10px;">120 km/h</td>
+<td style="padding: 10px;">74.6 mph</td>
+<td style="padding: 10px;">French motorway limit</td>
+</tr>
+</table>
+
+        <h2>When Do You Need a Speed Converter?</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Driving abroad:</strong> Speed limits are signed in km/h across Europe; hire cars often display both</li>
+          <li><strong>Fitness:</strong> Treadmills and running apps mix mph, km/h and min/km pace units</li>
+          <li><strong>Aviation and sailing:</strong> Wind and aircraft speeds are quoted in knots, while ground speeds may be in mph or km/h</li>
+          <li><strong>Weather:</strong> Storm warnings report wind speed in mph in the UK, knots at sea, and km/h or m/s elsewhere</li>
+          <li><strong>Vehicle specs:</strong> Comparing top speeds and acceleration figures quoted in different units by different manufacturers</li>
+        </ul>
+
+        <h2>Why Knots Are Still Used</h2>
+        <p>
+          Knots (nautical miles per hour) have survived in aviation and shipping because navigation is
+          based on latitude and longitude. One nautical mile equals one minute of latitude, which
+          makes nautical-mile-based speed directly useful for plotting positions on a chart. One knot
+          is 1.852 km/h exactly, and while it looks like an odd number in metric terms, it is the
+          natural unit for anyone working with maps and sextants. For everyone else, this converter
+          makes knot values readable in the units you actually use.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How do I convert mph to km/h?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Multiply the speed in mph by 1.60934 to get km/h. For example, 60 mph × 1.60934 = 96.6 km/h. To go the other way, divide km/h by 1.60934. Our <a href="/speed-converter/">speed converter</a> does this instantly.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is a knot in mph?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One knot equals 1.15078 mph. A typical cruising aircraft speed of 450 knots is about 518 mph. To convert knots to mph, multiply by 1.151.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How fast is 100 km/h in mph?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">100 km/h is 62.14 mph. This is a common motorway speed limit across Europe and Australia.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is the difference between speed and pace?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Speed is distance per unit of time (km/h, mph). Pace is time per unit of distance (minutes per kilometre or mile), used by runners. A 5 min/km pace equals 12 km/h.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Why does the UK use mph while Europe uses km/h?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">The UK retained imperial road signage when it adopted metric units for most other measurements. All UK speed limits are in miles per hour, so drivers crossing the Channel need fast, accurate conversion.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does the speed converter work offline?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes. Conversions are calculated locally in your browser with exact factors, so the tool works offline and no data leaves your device.</p>
+</div></div>
+</div>
+    
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

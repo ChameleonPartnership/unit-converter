@@ -17,13 +17,13 @@
     <meta property="og:description" content="Fast unit converter with dark mode, copy-to-clipboard & conversion history. Convert temperature, length, weight, volume, pressure, speed & area online." />
     <meta property="og:url" content="https://convert-unit.pro/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://unitconverter.vercel.app/og-image.png" />
+    <meta property="og:image" content="https://convert-unit.pro/og-image.png" />
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Unit Converter - Instant Conversions" />
     <meta name="twitter:description" content="Free unit converter with dark mode, history & copy-to-clipboard. Convert temperature, length, weight, volume, pressure, speed & area. No signup." />
-    <meta name="twitter:image" content="https://unitconverter.vercel.app/og-image.png" />
+    <meta name="twitter:image" content="https://convert-unit.pro/og-image.png" />
     <script>
       document.documentElement.dataset.theme =
         localStorage.getItem("unitConverterTheme") ||
@@ -38,7 +38,7 @@
         "applicationCategory": "CalculatorTool",
         "operatingSystem": "Any",
         "description": "A fast unit conversion calculator for temperature, length, weight, volume, pressure, speed, and area.",
-        "url": "https://unitconverter.vercel.app/",
+        "url": "https://convert-unit.pro/",
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -143,6 +143,83 @@
         </aside>
       </div>
 
+      <section class="content-section">
+        <h2>How to Use the Unit Converter</h2>
+        <p>
+          Using the converter takes seconds. Select a category (temperature, length, weight, volume,
+          pressure, speed or area), choose the unit you have in the From box and the unit you want in
+          the To box, then type a value. The result updates as you type, with precision up to ten
+          decimal places. Use the swap button to reverse the conversion instantly, the copy button to
+          grab the result, and the share button to send it. Your recent conversions are saved in your
+          browser, so you can refer back to them without re-entering anything.
+        </p>
+
+        <h2>Popular Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <th style="text-align: left; padding: 10px;">Category</th>
+            <th style="text-align: left; padding: 10px;">Example</th>
+            <th style="text-align: left; padding: 10px;">Why it matters</th>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Temperature</td>
+            <td style="padding: 10px;">25°C = 77°F</td>
+            <td style="padding: 10px;">Comfortable room temperature</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Length</td>
+            <td style="padding: 10px;">1 inch = 2.54 cm</td>
+            <td style="padding: 10px;">Exact definition used worldwide</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Weight</td>
+            <td style="padding: 10px;">1 kg = 2.2046 lb</td>
+            <td style="padding: 10px;">The most-asked conversion</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Volume</td>
+            <td style="padding: 10px;">1 US gallon = 3.785 L</td>
+            <td style="padding: 10px;">Standard US liquid measure</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Pressure</td>
+            <td style="padding: 10px;">2.4 bar = 34.8 psi</td>
+            <td style="padding: 10px;">Typical car tyre pressure</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border);">
+            <td style="padding: 10px;">Speed</td>
+            <td style="padding: 10px;">60 mph = 96.6 km/h</td>
+            <td style="padding: 10px;">UK motorway limit</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">Area</td>
+            <td style="padding: 10px;">1 m² = 10.764 ft²</td>
+            <td style="padding: 10px;">Property listings</td>
+          </tr>
+        </table>
+
+        <h2>Why Use Our Converter?</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Accurate:</strong> Uses exact international conversion factors (SI), not rounded approximations, so results are correct to ten decimal places</li>
+          <li><strong>Private:</strong> All calculations run locally in your browser. Nothing is sent to a server and no data is tracked</li>
+          <li><strong>Offline:</strong> Once loaded, the entire tool works without an internet connection</li>
+          <li><strong>Fast:</strong> Results update as you type, with keyboard-friendly controls and instant unit swapping</li>
+          <li><strong>Free:</strong> No signup, no account, no limits. Convert as many values as you like</li>
+        </ul>
+
+        <h2>Which Converter Do You Need?</h2>
+        <p>
+          Every category has its own dedicated page with formulas, reference tables and practical
+          guidance: <a href="/temperature-converter/">temperature</a>,
+          <a href="/length-converter/">length</a>, <a href="/weight-converter/">weight</a>,
+          <a href="/volume-converter/">volume</a>, <a href="/pressure-converter/">pressure</a>,
+          <a href="/speed-converter/">speed</a> and <a href="/area-converter/">area</a>.
+          Each page includes the same instant calculator plus the formulas behind every conversion,
+          common values, and answers to frequently asked questions, so you can check your working
+          and understand the maths rather than just trusting the result.
+        </p>
+      </section>
+
       <section class="faq-section" aria-labelledby="faqTitle">
         <h2 id="faqTitle">Frequently Asked Questions</h2>
         
@@ -204,9 +281,29 @@
             </div>
           </div>
 
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Is this unit converter free to use?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Yes, completely free. There is no signup, no account, no daily limit and no premium tier. All seven converter categories are available to everyone with no restrictions.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Why do UK and US gallons differ?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">The imperial gallon (4.546 L) and US gallon (3.785 L) have different historical definitions. Our <a href="/volume-converter/">volume converter</a> uses US customary units, the standard for American recipes and international reference tables.</p>
+            </div>
+          </div>
+
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How accurate are the conversion results?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text">Results are accurate to ten decimal places. The converter uses exact SI conversion factors, and rounding only happens when the result is displayed, never in the underlying calculation. For everyday use the values match physical reference standards.</p>
+            </div>
+          </div>
+
         </div>
       </section>
-    </main>
 
     <footer class="site-footer">
       <nav aria-label="Footer navigation">

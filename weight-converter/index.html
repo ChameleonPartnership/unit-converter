@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Free weight converter. Convert milligrams, grams, kilograms, ounces, pounds and US tons instantly. KG to LBS and LBS to KG made simple. No signup required." />
+    <meta name="theme-color" content="#0f766e" />
+    <title>Weight Converter - KG to LBS, Grams to Ounces & More</title>
+    <link rel="canonical" href="https://convert-unit.pro/weight-converter/" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Weight Converter - Free KG to LBS & More" />
+    <meta property="og:description" content="Convert mg, g, kg, ounces, pounds and tons instantly. Free online weight and mass converter with dark mode." />
+    <meta property="og:url" content="https://convert-unit.pro/weight-converter/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Weight Converter - KG to LBS, Grams to Ounces & More" />
+    <meta name="twitter:description" content="Convert mg, g, kg, ounces, pounds and tons instantly. Free online weight and mass converter with dark mode." />
+    
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("unitConverterTheme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Weight Converter",
+        "applicationCategory": "CalculatorTool",
+        "description": "Convert milligrams, grams, kilograms, ounces, pounds, and US tons instantly.",
+        "url": "https://convert-unit.pro/weight-converter/",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="../index.html" aria-label="Unit Converter home">
+          <span class="brand-mark" aria-hidden="true">UC</span>
+          <span>Unit Converter</span>
+        </a>
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Metric and imperial weight conversions</p>
+          <h1>Weight Converter</h1>
+          <p>
+            Convert milligrams, grams, kilograms, ounces, pounds and US tons instantly with our free online weight converter. Perfect for fitness, cooking and shipping. No signup required.
+          </p>
+        </div>
+      </section>
+
+      <div class="layout">
+        <section class="calculator-panel" aria-labelledby="calculatorTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="calculatorTitle">Convert Weight</h2>
+              <p>Results update as you type.</p>
+            </div>
+          </div>
+
+          <form class="converter" id="converterForm">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" aria-label="Conversion category"></select>
+            </div>
+
+            <div class="conversion-grid">
+              <div class="unit-box">
+                <label for="fromValue">From</label>
+                <input
+                  id="fromValue"
+                  name="fromValue"
+                  type="number"
+                  inputmode="decimal"
+                  value="1"
+                  aria-describedby="fromHelp"
+                />
+                <span class="sr-only" id="fromHelp">Enter the value to convert.</span>
+                <select id="fromUnit" name="fromUnit" aria-label="From unit"></select>
+              </div>
+
+              <button class="swap-button" id="swapUnits" type="button" aria-label="Swap units">
+                ⇄
+              </button>
+
+              <div class="unit-box">
+                <label for="toValue">To</label>
+                <input
+                  id="toValue"
+                  name="toValue"
+                  type="number"
+                  inputmode="decimal"
+                  aria-describedby="toHelp"
+                />
+                <span class="sr-only" id="toHelp">Enter a value here to reverse the conversion.</span>
+                <select id="toUnit" name="toUnit" aria-label="To unit"></select>
+              </div>
+            </div>
+
+            <div class="result-actions" aria-label="Result actions">
+              <output class="result" id="resultText" for="fromValue fromUnit toUnit">1 kg = 2.2046 lb</output>
+              <div class="button-group">
+                <button class="secondary-button" type="button" id="copyButton">Copy</button>
+                <button class="secondary-button" type="button" id="shareButton">Share</button>
+              </div>
+            </div>
+
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="side-column" aria-label="Sidebar">
+          <section class="history-panel" aria-labelledby="historyTitle">
+            <div class="section-heading compact">
+              <h2 id="historyTitle">Recent Conversions</h2>
+              <button class="text-button" type="button" id="clearHistory">Clear</button>
+            </div>
+            <ol class="history-list" id="historyList"></ol>
+          </section>
+        </aside>
+      </div>
+
+      <section class="content-section">
+
+        <h2>How to Convert Weight Units</h2>
+        <p>
+          Weight and mass conversions come up constantly in everyday life: tracking gym progress in
+          kilograms or pounds, weighing ingredients for recipes, calculating postage, or comparing
+          product weights between countries. The metric system (milligrams, grams, kilograms) is used
+          for almost all scientific work and most of the world, while pounds and ounces remain the
+          everyday units in the United States and are common in the UK for body weight and cooking.
+        </p>
+
+        <h3>Key Weight Conversion Formulas</h3>
+        <p><strong>1 kg = 2.20462 lb</strong> (the most-asked conversion)</p>
+        <p><strong>1 lb = 453.592 g</strong>, or 0.4536 kg</p>
+        <p><strong>1 oz = 28.3495 g</strong></p>
+        <p><strong>1 US ton = 907.185 kg</strong> (2,000 lb)</p>
+        <p>
+          Our calculator expresses every unit relative to the kilogram using exact conversion factors,
+          then converts to the unit you choose. So converting kg to lb is a single multiplication,
+          and the result is accurate to as many decimal places as you need.
+        </p>
+
+        <h2>Common Weight Conversions</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+<tr style="border-bottom: 1px solid var(--color-border);">
+<th style="text-align: left; padding: 10px;">Unit</th>
+<th style="text-align: left; padding: 10px;">Equals</th>
+<th style="text-align: left; padding: 10px;">Real-world reference</th>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 kilogram (kg)</td>
+<td style="padding: 10px;">2.2046 lb</td>
+<td style="padding: 10px;">A bag of sugar is 1 kg in most of the world</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 pound (lb)</td>
+<td style="padding: 10px;">453.6 g</td>
+<td style="padding: 10px;">A standard loaf of bread</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 ounce (oz)</td>
+<td style="padding: 10px;">28.35 g</td>
+<td style="padding: 10px;">A slice of cheese is about 1 oz</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 stone (14 lb)</td>
+<td style="padding: 10px;">6.35 kg</td>
+<td style="padding: 10px;">Still used for body weight in the UK</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--color-border);">
+<td style="padding: 10px;">1 gram (g)</td>
+<td style="padding: 10px;">0.0353 oz</td>
+<td style="padding: 10px;">A paperclip weighs about 1 g</td>
+</tr>
+<tr style="">
+<td style="padding: 10px;">1 US ton</td>
+<td style="padding: 10px;">907.2 kg</td>
+<td style="padding: 10px;">2,000 pounds</td>
+</tr>
+</table>
+
+        <h2>Practical Uses for a Weight Converter</h2>
+        <ul style="color: var(--color-muted);">
+          <li><strong>Fitness and health:</strong> Gym plates are often labelled in lb in the US and kg elsewhere; body-weight goals are tracked in either unit</li>
+          <li><strong>Cooking and baking:</strong> Recipes from different countries use grams, ounces or pounds; accurate conversion prevents failed bakes</li>
+          <li><strong>Shipping and postage:</strong> Carriers quote limits and prices in kg or lb depending on region</li>
+          <li><strong>Travel:</strong> Airline baggage allowances are quoted in kg almost everywhere except the US, where pounds are used</li>
+          <li><strong>E-commerce:</strong> Comparing product weights listed on international marketplaces</li>
+        </ul>
+
+        <h2>Why Weight Conversion Accuracy Matters</h2>
+        <p>
+          Small rounding errors compound quickly. If you round 1 kg to 2.2 lb instead of 2.20462 lb,
+          a 100 kg load is out by about 0.5 lb; for shipping or nutrition that margin matters. The
+          converter above uses full-precision factors (1 kg = 2.2046226218 lb) and formats the result
+          cleanly, so you get laboratory-grade accuracy without the maths. All calculations happen
+          locally in your browser, which means no data leaves your device and the tool works offline.
+        </p>
+
+        <h2>Frequently Asked Questions</h2>
+<div itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many pounds are in a kilogram?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One kilogram equals 2.20462 pounds. To convert kg to lb, multiply by 2.20462. To convert lb to kg, divide by 2.20462. Use our <a href="/weight-converter/">weight converter</a> for instant results.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many grams are in an ounce?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One avoirdupois ounce is exactly 28.349523125 grams. To convert ounces to grams, multiply by 28.35. For example, a 16 oz (1 lb) steak is 453.6 g.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">What is a stone in kilograms?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One stone is 14 pounds, which equals 6.35029 kilograms. Stone is still the standard unit for body weight in the UK and Ireland. To convert stone to kg, multiply by 6.35.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">How many pounds are in a US ton?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">One US (short) ton is 2,000 pounds, which equals 907.185 kilograms. Note the metric tonne is 1,000 kg (2,204.6 lb), slightly heavier than the US ton.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Does the weight converter work offline?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Yes. Conversions run entirely in your browser using exact conversion factors. Once the page is loaded, you can use it offline with no server calls.</p>
+</div></div>
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name">Why do I get different results to other calculators?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Most differences come from rounding. This tool uses full-precision factors and only rounds the final display. If a result still looks wrong, check that you selected the correct unit, for example US fluid ounce versus weight ounce, which are different measures.</p>
+</div></div>
+</div>
+    
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer navigation">
+        <div class="footer-section">
+          <h3>Converters</h3>
+          <ul class="footer-list">
+            <li><a href="/temperature-converter/">Temperature Converter</a></li>
+            <li><a href="/length-converter/">Length Converter</a></li>
+            <li><a href="/weight-converter/">Weight Converter</a></li>
+            <li><a href="/volume-converter/">Volume Converter</a></li>
+            <li><a href="/pressure-converter/">Pressure Converter</a></li>
+            <li><a href="/speed-converter/">Speed Converter</a></li>
+            <li><a href="/area-converter/">Area Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Information</h3>
+          <ul class="footer-list">
+            <li><a href="/index.html">Main Converter</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/privacy.html">Privacy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>&copy; 2026 Unit Converter. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/theme.js" defer></script>
+    <script src="../assets/js/app.js" defer></script>
+  </body>
+</html>

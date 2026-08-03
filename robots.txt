@@ -34,4 +34,4 @@ User-agent: SemrushBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://unitconverter.vercel.app/sitemap.xml
+Sitemap: https://convert-unit.pro/sitemap.xml
